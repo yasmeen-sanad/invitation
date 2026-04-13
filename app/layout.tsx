@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
-import { Playfair_Display, Great_Vibes } from 'next/font/google'
+import { Playfair_Display, Great_Vibes, Cairo } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
+import { BackgroundMusic } from '@/components/background-music'
 import './globals.css'
 
 const playfair = Playfair_Display({ 
@@ -12,6 +13,11 @@ const greatVibes = Great_Vibes({
   subsets: ["latin"],
   variable: '--font-script'
 });
+
+const cairo = Cairo({
+  subsets: ["arabic"],
+  variable: "--font-arabic",
+})
 
 export const metadata: Metadata = {
   title: 'Wiam & Waleed - Wedding Invitation',
@@ -43,9 +49,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${playfair.variable} ${greatVibes.variable} font-sans antialiased`}>
+      <body className={`${playfair.variable} ${greatVibes.variable} ${cairo.variable} font-sans antialiased`}>
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
+        <BackgroundMusic />
       </body>
     </html>
   )

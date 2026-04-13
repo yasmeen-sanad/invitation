@@ -1,36 +1,45 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import Image from "next/image"
+import { playBackgroundMusic } from "@/components/background-music"
 
 interface IntroScreenProps {
   onOpen: () => void
+  language: "en" | "ar"
 }
 
 const CASTLE_ENTRANCE_MS = 1400
 const HOLD_BEFORE_CONTENT_MS = 250
 
-export function IntroScreen({ onOpen }: IntroScreenProps) {
+export function IntroScreen({ onOpen, language }: IntroScreenProps) {
   const [isPressed, setIsPressed] = useState(false)
+  const isArabic = language === "ar"
+  const arabicFontFamily = "var(--font-arabic), ui-sans-serif, system-ui"
+
+  // No auto-open - only open when user clicks logo
 
   const handleClick = () => {
     if (isPressed) return
     setIsPressed(true)
+    // Play music when logo is clicked
+    playBackgroundMusic()
     setTimeout(() => onOpen(), CASTLE_ENTRANCE_MS + HOLD_BEFORE_CONTENT_MS)
   }
 
   return (
     <AnimatePresence mode="wait">
-      {!isPressed ? (
-        <motion.div
-          key="tap"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-          className="fixed inset-0 z-50 flex flex-col items-center justify-center overflow-hidden"
+        {!isPressed ? (
+          <motion.div
+            key="tap"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+            className="fixed inset-0 z-50 flex flex-col items-center justify-center overflow-hidden"
           style={{
+            ...(isArabic ? { fontFamily: arabicFontFamily } : null),
             // Watercolor palette: warm cream → blush rose → sage green mist
             background:
               "linear-gradient(180deg, #fdf8f4 0%, #f8ede4 30%, #eee8e0 60%, #e8eeea 100%)",
@@ -45,7 +54,7 @@ export function IntroScreen({ onOpen }: IntroScreenProps) {
             transition={{ duration: 1.4 }}
           >
             <div
-              className="absolute left-1/2 top-[42%] h-[28rem] w-[28rem] -translate-x-1/2 rounded-full"
+              className="absolute left-1/2 top-[42%] h-112 w-md -translate-x-1/2 rounded-full"
               style={{
                 background: "radial-gradient(circle, rgba(240,224,210,0.55) 0%, transparent 70%)",
                 filter: "blur(48px)",
@@ -87,7 +96,7 @@ export function IntroScreen({ onOpen }: IntroScreenProps) {
               transition={{ duration: 0.22, ease: "easeOut" }}
               className="relative aspect-square w-[min(85vw,18rem)] md:w-80 shrink-0 overflow-hidden rounded-full"
               style={{
-                boxShadow: "0 24px 64px -16px rgba(160,120,100,0.24), 0 0 0 1px rgba(215,190,172,0.28)",
+                
               }}
             >
               <Image
@@ -101,7 +110,7 @@ export function IntroScreen({ onOpen }: IntroScreenProps) {
             </motion.div>
           </motion.div>
 
-          {/* Wedding Invitation label */}
+          {/* Invitation label */}
           <motion.div
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
@@ -109,7 +118,7 @@ export function IntroScreen({ onOpen }: IntroScreenProps) {
             className="relative z-10 mt-5 text-center"
           >
             <p className="text-[11px] uppercase tracking-[0.38em] text-[#9e8e82]">
-              Wedding Invitation
+              {isArabic ? "دعوة لحفل عقد قران" : "Engagement Invitation"}
             </p>
           </motion.div>
 
@@ -133,7 +142,7 @@ export function IntroScreen({ onOpen }: IntroScreenProps) {
             transition={{ duration: 2.4, repeat: Infinity, delay: 0.9 }}
             className="relative z-10 mt-10 text-[11px] tracking-[0.28em] text-[#a09080]"
           >
-            TAP TO OPEN
+            {isArabic ? "اضغط للدخول" : "TAP TO OPEN"}
           </motion.p>
         </motion.div>
       ) : (

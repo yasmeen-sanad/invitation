@@ -4,7 +4,14 @@ import { motion } from "framer-motion"
 import Image from "next/image"
 import { MapPin, Calendar, Clock } from "lucide-react"
 
-export function WeddingDetails() {
+interface WeddingDetailsProps {
+  language?: "en" | "ar"
+}
+
+export function WeddingDetails({ language = "en" }: WeddingDetailsProps) {
+  const isArabic = language === "ar"
+  const arabicFontFamily = "var(--font-arabic), ui-sans-serif, system-ui"
+
   return (
     <section
       className="relative px-4 pb-16 pt-4"
@@ -19,8 +26,10 @@ export function WeddingDetails() {
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }} viewport={{ once: true }} className="text-center mb-8">
           <h2 className="text-4xl text-[#6b5248] mb-2"
-            style={{ fontFamily: "var(--font-script), 'Great Vibes', cursive" }}>Details of the Day</h2>
-          <p className="text-sm text-[#9e8e82]">Everything you need to know about our special day</p>
+            style={{
+              fontFamily: isArabic ? arabicFontFamily : "var(--font-script), 'Great Vibes', cursive",
+            }}>{isArabic ? "تفاصيل اليوم" : "Details of the Day"}</h2>
+          <p className="text-sm text-[#9e8e82]">{isArabic ? "كل ما تحتاجون معرفته عن يومنا المميز" : "Everything you need to know about our special day"}</p>
         </motion.div>
 
         {/* Venue photo — ELVEE Event Hall */}
@@ -32,7 +41,7 @@ export function WeddingDetails() {
           className="relative mb-8 overflow-hidden rounded-2xl bg-[#e8e0d8]"
           style={{ boxShadow: "0 16px 48px -12px rgba(140,100,80,0.2)" }}
         >
-          <div className="relative aspect-[4/3] w-full">
+          <div className="relative aspect-4/3 w-full">
             <Image
               src="/images/elvee-event-hall.png"
               alt="ELVEE Event Hall — entrance"
@@ -53,20 +62,20 @@ export function WeddingDetails() {
             boxShadow: "0 8px 32px -8px rgba(160,120,100,0.16)",
             backdropFilter: "blur(12px)",
           }}>
-          <h3 className="text-base font-medium text-[#6b5248] mb-1">Location</h3>
+          <h3 className="text-base font-medium text-[#6b5248] mb-1">{isArabic ? "الموقع" : "Location"}</h3>
           <p className="text-lg text-[#3d3028] font-medium mb-4">ELVEE Event Hall</p>
           <div className="space-y-3">
             <div className="flex items-center gap-3 text-[#7a6a60]">
               <MapPin className="w-4 h-4 shrink-0" style={{ color: "#c4a090" }} />
-              <span className="text-sm">Riyadh, Saudi Arabia</span>
+              <span className="text-sm">{isArabic ? "الرياض، المملكة العربية السعودية" : "Riyadh, Saudi Arabia"}</span>
             </div>
             <div className="flex items-center gap-3 text-[#7a6a60]">
               <Calendar className="w-4 h-4 shrink-0" style={{ color: "#a0b888" }} />
-              <span className="text-sm">Sunday, May 1, 2026</span>
+              <span className="text-sm">{isArabic ? "الأربعاء، 29 أبريل 2026" : "Wednesday, April 29, 2026"}</span>
             </div>
             <div className="flex items-center gap-3 text-[#7a6a60]">
               <Clock className="w-4 h-4 shrink-0" style={{ color: "#88aac0" }} />
-              <span className="text-sm">From 8:00 PM</span>
+              <span className="text-sm">{isArabic ? "من الساعة 8:00 مساءً" : "From 8:00 PM"}</span>
             </div>
           </div>
         </motion.div>
@@ -84,7 +93,7 @@ export function WeddingDetails() {
               boxShadow: "0 6px 24px rgba(196,160,144,0.38)",
             }}>
             <MapPin className="w-4 h-4" />
-            <span className="text-sm tracking-wide">How to get there</span>
+            <span className="text-sm tracking-wide">{isArabic ? "طريقة الوصول" : "How to get there"}</span>
           </a>
         </motion.div>
 

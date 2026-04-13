@@ -5,6 +5,7 @@ import { motion } from "framer-motion"
 
 interface CountdownTimerProps {
   targetDate: string
+  language?: "en" | "ar"
 }
 
 interface TimeLeft {
@@ -14,7 +15,7 @@ interface TimeLeft {
   seconds: number
 }
 
-export function CountdownTimer({ targetDate }: CountdownTimerProps) {
+export function CountdownTimer({ targetDate, language = "en" }: CountdownTimerProps) {
   const [timeLeft, setTimeLeft] = useState<TimeLeft>({ days: 0, hours: 0, minutes: 0, seconds: 0 })
   const [mounted, setMounted] = useState(false)
 
@@ -38,11 +39,13 @@ export function CountdownTimer({ targetDate }: CountdownTimerProps) {
 
   if (!mounted) return null
 
+  const isArabic = language === "ar"
+  const arabicFontFamily = "var(--font-arabic), ui-sans-serif, system-ui"
   const units = [
-    { label: "DAYS",    value: timeLeft.days,    accent: "#f2b4b4" },
-    { label: "HOURS",   value: timeLeft.hours,   accent: "#b5d1b5" },
-    { label: "MINS",    value: timeLeft.minutes, accent: "#b4c8dc" },
-    { label: "SECS",    value: timeLeft.seconds, accent: "#dcc4b4" },
+    { label: isArabic ? "يوم" : "DAYS", value: timeLeft.days, accent: "#f2b4b4" },
+    { label: isArabic ? "ساعة" : "HOURS", value: timeLeft.hours, accent: "#b5d1b5" },
+    { label: isArabic ? "دقيقة" : "MINS", value: timeLeft.minutes, accent: "#b4c8dc" },
+    { label: isArabic ? "ثانية" : "SECS", value: timeLeft.seconds, accent: "#dcc4b4" },
   ]
 
   return (
@@ -58,8 +61,10 @@ export function CountdownTimer({ targetDate }: CountdownTimerProps) {
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }} viewport={{ once: true }} className="text-center mb-10">
           <h2 className="text-4xl text-[#6b5248] mb-2"
-            style={{ fontFamily: "var(--font-script), 'Great Vibes', cursive" }}>Countdown</h2>
-          <p className="text-sm text-[#9e8e82] tracking-wide">Until we say &ldquo;I do&rdquo;</p>
+            style={{
+              fontFamily: isArabic ? arabicFontFamily : "var(--font-script), 'Great Vibes', cursive",
+            }}>{isArabic ? "العد التنازلي" : "Countdown"}</h2>
+          <p className="text-sm text-[#9e8e82] tracking-wide">{isArabic ? "حتى نلتقي في يومنا الجميل" : "Until we say “I do”"}</p>
         </motion.div>
 
         <motion.div initial={{ opacity: 0, scale: 0.92 }} whileInView={{ opacity: 1, scale: 1 }}
