@@ -38,7 +38,7 @@ export default function WeddingInvitation() {
         <button
           type="button"
           onClick={() => setLanguage(isArabic ? "en" : "ar")}
-          className="rounded-full border border-white/55 bg-white/65 px-4 py-1.5 text-xs tracking-[0.16em] text-[#7e6e62] shadow-sm backdrop-blur-md transition hover:bg-white/80"
+          className={`rounded-full border border-white/55 bg-white/65 px-4 py-1.5 text-xs ${isArabic ? '' : 'tracking-[0.16em]'} text-[#7e6e62] shadow-sm backdrop-blur-md transition hover:bg-white/80`}
           style={isArabic ? { fontFamily: arabicFontFamily } : undefined}
         >
           {isArabic ? "ENGLISH" : "العربية"}
@@ -93,7 +93,7 @@ export default function WeddingInvitation() {
                     ))}
                   </div>
 
-                  <p className="mb-5 text-[10px] uppercase tracking-[0.42em] text-[#a8988c]/90">{copy.together}</p>
+                  <p className={`mb-5 text-[10px] uppercase ${isArabic ? '' : 'tracking-[0.42em]'} text-[#a8988c]/90`}>{copy.together}</p>
 
                   <h1
                     className="mb-1 text-5xl text-[#6e5c54] md:text-6xl"
@@ -114,7 +114,7 @@ export default function WeddingInvitation() {
                     Waleed
                   </h1>
 
-                  <div className="mb-6 space-y-1 text-[13px] font-light leading-relaxed tracking-wide text-[#8a7a72]/95">
+                  <div className={`mb-6 space-y-1 text-[13px] font-light leading-relaxed ${isArabic ? '' : 'tracking-wide'} text-[#8a7a72]/95`}>
                     <p>{copy.requestLine1}</p>
                     <p>{copy.requestLine2}</p>
                   </div>
@@ -126,7 +126,7 @@ export default function WeddingInvitation() {
                     >
                       29th April 2026
                     </p>
-                    <p className="mt-1.5 text-[10px] tracking-[0.28em] text-[#a8988c]/85">{copy.sundayDubai}</p>
+                    <p className={`mt-1.5 text-[10px] ${isArabic ? '' : 'tracking-[0.28em]'} text-[#a8988c]/85`}>{copy.sundayDubai}</p>
                   </div>
                 </motion.div>
 
@@ -161,7 +161,7 @@ export default function WeddingInvitation() {
                   <div className="h-px w-full bg-linear-to-r from-transparent via-[#c4b4a8]/50 to-transparent" />
                   <div className="flex items-center gap-3">
                     <span className="h-px w-8 bg-[#c4b4a8]/35" />
-                    <span className="text-[9px] tracking-[0.35em] text-[#a8988c]/70 uppercase">{copy.venue}</span>
+                    <span className={`text-[9px] ${isArabic ? '' : 'tracking-[0.35em]'} text-[#a8988c]/70 uppercase`}>{copy.venue}</span>
                     <span className="h-px w-8 bg-[#c4b4a8]/35" />
                   </div>
                 </div>
@@ -184,7 +184,7 @@ export default function WeddingInvitation() {
                     <div className="absolute inset-0 flex flex-col items-center justify-start pt-15 md:pt-12">
                       <motion.p initial={{ opacity: 0, y: -8 }} whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }} transition={{ delay: 0.15 }}
-                        className="text-[10px] tracking-[0.38em] text-[#7a6458] uppercase mb-9">{copy.saveTheDate}</motion.p>
+                        className={`text-[10px] ${isArabic ? '' : 'tracking-[0.38em]'} text-[#7a6458] uppercase mb-9`}>{copy.saveTheDate}</motion.p>
                       <motion.h1 initial={{ opacity: 0, scale: 0.93 }} whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }} transition={{ delay: 0.25 }}
                         className="text-4xl md:text-5xl text-[#6b5248]"
@@ -212,7 +212,7 @@ export default function WeddingInvitation() {
                 style={{ background: "linear-gradient(180deg, rgba(255,252,250,0.88) 0%, rgba(252,238,232,0.96) 100%)" }}>
                 <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }}
                   transition={{ duration: 0.8 }} viewport={{ once: true }}>
-                  <p className="text-sm text-[#9e8e82] tracking-[0.3em]">29 · 04 · 2026</p>
+                  <p className={`text-sm text-[#9e8e82] ${isArabic ? '' : 'tracking-[0.3em]'}`}>29 · 04 · 2026</p>
                   <div className="flex justify-center gap-3 mt-6">
                     {["#f2b4b4","#b4c8dc","#b5d1b5","#d0b4d0","#dcc4b4"].map((c, i) => (
                       <motion.svg key={i} width="14" height="14" viewBox="0 0 24 24" fill={c} style={{ opacity: 0.85 }}
@@ -221,7 +221,7 @@ export default function WeddingInvitation() {
                       </motion.svg>
                     ))}
                   </div>
-                  <p className="text-sm text-[#b0a098] mt-8 tracking-wide">{copy.footerMessage}</p>
+                  <p className={`text-sm text-[#b0a098] mt-8 ${isArabic ? '' : 'tracking-wide'}`}>{copy.footerMessage}</p>
                 </motion.div>
               </footer>
 

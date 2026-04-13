@@ -116,7 +116,7 @@ export function IntroScreen({ onOpen, language }: IntroScreenProps) {
             transition={{ delay: 0.45, duration: 0.65, ease: "easeOut" }}
             className="relative z-10 mt-5 text-center"
           >
-            <p className="text-[11px] uppercase tracking-[0.38em] text-[#9e8e82]">
+            <p className={`text-[11px] uppercase ${isArabic ? '' : 'tracking-[0.38em]'} text-[#9e8e82]`}>
               {isArabic ? "دعوة لحفل عقد قران" : "Engagement Invitation"}
             </p>
           </motion.div>
@@ -139,7 +139,7 @@ export function IntroScreen({ onOpen, language }: IntroScreenProps) {
             initial={{ opacity: 0 }}
             animate={{ opacity: [0.25, 0.8, 0.25] }}
             transition={{ duration: 2.4, repeat: Infinity, delay: 0.9 }}
-            className="relative z-10 mt-10 text-[11px] tracking-[0.28em] text-[#a09080]"
+            className={`relative z-10 mt-10 text-[11px] ${isArabic ? '' : 'tracking-[0.28em]'} text-[#a09080]`}
           >
             {isArabic ? "اضغط للدخول" : "TAP TO OPEN"}
           </motion.p>
