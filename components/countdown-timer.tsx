@@ -64,7 +64,7 @@ export function CountdownTimer({ targetDate, language = "en" }: CountdownTimerPr
             style={{
               fontFamily: isArabic ? arabicFontFamily : "var(--font-script), 'Great Vibes', cursive",
             }}>{isArabic ? "العد التنازلي" : "Countdown"}</h2>
-          <p className="text-sm text-[#9e8e82] tracking-wide">{isArabic ? "حتى نلتقي في يومنا الجميل" : "Until we say “I do”"}</p>
+          <p className="text-sm text-[#9e8e82] tracking-wide">{isArabic ? "حتى نلتقي في يومنا الجميل" : "Until we meet on our special day"}</p>
         </motion.div>
 
         <motion.div initial={{ opacity: 0, scale: 0.92 }} whileInView={{ opacity: 1, scale: 1 }}

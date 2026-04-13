@@ -18,8 +18,7 @@ export function IntroScreen({ onOpen, language }: IntroScreenProps) {
   const isArabic = language === "ar"
   const arabicFontFamily = "var(--font-arabic), ui-sans-serif, system-ui"
 
-  // No auto-open - only open when user clicks logo
-
+  
   const handleClick = () => {
     if (isPressed) return
     setIsPressed(true)
@@ -30,7 +29,7 @@ export function IntroScreen({ onOpen, language }: IntroScreenProps) {
 
   return (
     <AnimatePresence mode="wait">
-        {!isPressed ? (
+      {!isPressed ? (
           <motion.div
             key="tap"
             initial={{ opacity: 0 }}
