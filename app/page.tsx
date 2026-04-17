@@ -10,25 +10,28 @@ import { WeddingDetails } from "@/components/wedding-details"
 export default function WeddingInvitation() {
   const [isOpen, setIsOpen] = useState(false)
   const [language, setLanguage] = useState<"en" | "ar">("en")
+
   const isArabic = language === "ar"
   const arabicFontFamily = "var(--font-arabic), ui-sans-serif, system-ui"
+  const scriptFont = "var(--font-script), 'Great Vibes', cursive"
+
   const copy = isArabic
     ? {
-        together: "بدعوة من عائلتيهما",
-        requestLine1: "يتشرفان بدعوتكم",
-        requestLine2: "لحضور حفلة عقد القران",
-        sundayDubai: "الأربعاء · الرياض",
+        together:
+          "بصادق الود والمحبة تتشرف السيدة/ نورية علي حرم الدكتور/ سند عبدالعزيز بدعوتكم لحضور حفلة عقد قران ابنتها",
+        byWillOfGod: "وذلك بمشيئة الله",
         venue: "الموقع",
-        saveTheDate: "Save The Date",
+        invitationDate: " ٢٩ أبريل ",
+        footerDate: "٢٩ · ٠٤ · ٢٠٢٦",
         footerMessage: "لا يسعنا الانتظار للاحتفال معكم",
       }
     : {
-        together: "Together with their families",
-        requestLine1: "Request the pleasure of your company",
-        requestLine2: "at their Engagement Party",
-        sundayDubai: "Wednesday · Riyadh",
+        together:
+          "With sincere affection and love, Mrs. Noura Ali, wife of Dr.Sanad Abdulaziz, is honored to invite you to attend the engagement ceremony of her daughter",
+        byWillOfGod: "By the will of God",
         venue: "Venue",
-        saveTheDate: "Save the Date",
+        invitationDate: "Wednesday, April 29, 2026",
+        footerDate: "29 · 04 · 2026",
         footerMessage: "We can't wait to celebrate with you",
       }
 
@@ -38,33 +41,49 @@ export default function WeddingInvitation() {
         <button
           type="button"
           onClick={() => setLanguage(isArabic ? "en" : "ar")}
-          className={`rounded-full border border-white/55 bg-white/65 px-4 py-1.5 text-xs ${isArabic ? '' : 'tracking-[0.16em]'} text-[#7e6e62] shadow-sm backdrop-blur-md transition hover:bg-white/80`}
+          className="rounded-full border border-white/55 bg-white/65 px-4 py-1.5 text-xs text-[#7e6e62] shadow-sm backdrop-blur-md transition hover:bg-white/80"
           style={isArabic ? { fontFamily: arabicFontFamily } : undefined}
         >
           {isArabic ? "ENGLISH" : "العربية"}
         </button>
       </div>
+
       <AnimatePresence mode="wait">
         {!isOpen ? (
           <IntroScreen key="intro" onOpen={() => setIsOpen(true)} language={language} />
         ) : (
-          <motion.div key="content" initial={{ opacity: 1 }} animate={{ opacity: 1 }} className="relative">
-
-            {/* Fixed chateau background */}
+          <motion.div
+            key="content"
+            initial={{ opacity: 1 }}
+            animate={{ opacity: 1 }}
+            className="relative"
+          >
+            {/* Fixed background */}
             <div className="fixed inset-0 z-0">
-              <Image src="/images/chateau.jpg" alt="Chateau Background" fill className="object-cover" priority />
+              <Image
+                src="/images/chateau.jpg"
+                alt="Chateau Background"
+                fill
+                className="object-cover"
+                priority
+              />
               <motion.div
                 className="absolute inset-0"
-                style={{ background: "linear-gradient(180deg, rgba(255,252,248,0.22) 0%, rgba(255,248,244,0.12) 50%, rgba(252,240,235,0.32) 100%)" }}
+                style={{
+                  background:
+                    "linear-gradient(180deg, rgba(255,252,248,0.22) 0%, rgba(255,248,244,0.12) 50%, rgba(252,240,235,0.32) 100%)",
+                }}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 1.2, ease: "easeOut" }}
               />
             </div>
 
-            <div className="relative z-10" style={isArabic ? { fontFamily: arabicFontFamily } : undefined}>
-
-              {/* ── 1. Invitation ── */}
+            <div
+              className="relative z-10"
+              style={isArabic ? { fontFamily: arabicFontFamily } : undefined}
+            >
+              {/* 1. Invitation */}
               <section className="min-h-screen flex flex-col items-center justify-center py-12 px-4">
                 <motion.div
                   initial={{ y: 52, opacity: 0 }}
@@ -88,143 +107,222 @@ export default function WeddingInvitation() {
                         className="h-1.5 w-1.5 rounded-full"
                         style={{ background: c, opacity: 0.55 }}
                         animate={{ scale: [1, 1.2, 1], opacity: [0.45, 0.65, 0.45] }}
-                        transition={{ duration: 2.8, repeat: Infinity, delay: i * 0.18, ease: "easeInOut" }}
+                        transition={{
+                          duration: 2.8,
+                          repeat: Infinity,
+                          delay: i * 0.18,
+                          ease: "easeInOut",
+                        }}
                       />
                     ))}
                   </div>
 
-                  <p className={`mb-5 text-[10px] uppercase ${isArabic ? '' : 'tracking-[0.42em]'} text-[#a8988c]/90`}>{copy.together}</p>
-
-                  <h1
-                    className="mb-1 text-5xl text-[#6e5c54] md:text-6xl"
-                    style={{ fontFamily: "var(--font-script), 'Great Vibes', cursive" }}
-                  >
-                    Weaam
-                  </h1>
                   <p
-                    className="my-1.5 text-3xl text-[#c9a99a]/95"
-                    style={{ fontFamily: "var(--font-script), 'Great Vibes', cursive" }}
+                    className={`mb-4 ${
+                      isArabic ? "text-[14px]" : "text-[12px] leading-snug"
+                    } text-[#a8988c]/90`}
                   >
-                    &
+                    {copy.together}
                   </p>
+
                   <h1
-                    className="mb-6 text-5xl text-[#6e5c54] md:text-6xl"
-                    style={{ fontFamily: "var(--font-script), 'Great Vibes', cursive" }}
+                    className="mb-1 text-3xl text-[#6e5c54] md:text-6xl"
+                    style={isArabic ? { fontFamily: arabicFontFamily } : { fontFamily: scriptFont }}
                   >
-                    Waleed
+                    {isArabic ? "وئام" : "Weaam"}
                   </h1>
 
-                  <div className={`mb-6 space-y-1 text-[13px] font-light leading-relaxed ${isArabic ? '' : 'tracking-wide'} text-[#8a7a72]/95`}>
-                    <p>{copy.requestLine1}</p>
-                    <p>{copy.requestLine2}</p>
-                  </div>
+                  <p
+                    className="my-1.5 text-sm text-[#c9a99a]/95"
+                    style={isArabic ? { fontFamily: arabicFontFamily } : { fontFamily: scriptFont }}
+                  >
+                    {isArabic ? "على" : "&"}
+                  </p>
 
-                  <div className="border-t border-white/50 pt-5">
+                  <h1
+                    className="mb-6 text-3xl text-[#6e5c54] md:text-6xl"
+                    style={isArabic ? { fontFamily: arabicFontFamily } : { fontFamily: scriptFont }}
+                  >
+                    {isArabic ? "وليد" : "Waleed"}
+                  </h1>
+
+                  <div>
+                    <p
+                      className={`text-sm text-[#8a7a72]/90 mb-2 ${
+                        isArabic ? "text-[13px]" : "text-[12px] leading-snug"
+                      }`}
+                    >
+                      {copy.byWillOfGod}
+                    </p>
+
                     <p
                       className="text-2xl text-[#6e5c54]"
-                      style={{ fontFamily: "var(--font-script), 'Great Vibes', cursive" }}
+                      style={isArabic ? { fontFamily: arabicFontFamily } : { fontFamily: scriptFont }}
                     >
-                      29th April 2026
+                      {copy.invitationDate}
                     </p>
-                    <p className={`mt-1.5 text-[10px] ${isArabic ? '' : 'tracking-[0.28em]'} text-[#a8988c]/85`}>{copy.sundayDubai}</p>
                   </div>
                 </motion.div>
 
                 <motion.div
                   className="mt-9"
                   initial={{ opacity: 0 }}
-                  animate={{ y: [0, 8, 0], opacity: 0.4 }}
+                  animate={{ y: [0, 10, 0], opacity: 0.95 }}
                   transition={{
-                    y: { duration: 1.8, repeat: Infinity, ease: "easeInOut" },
+                    y: { duration: 1.6, repeat: Infinity, ease: "easeInOut" },
                     opacity: { duration: 0.7, delay: 1.2 },
                   }}
                 >
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="mx-auto">
+                  <svg
+                    width="30"
+                    height="30"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    className="mx-auto drop-shadow-[0_2px_6px_rgba(122,96,82,0.35)]"
+                  >
                     <path
                       d="M12 5v14M5 12l7 7 7-7"
-                      stroke="#9a8a80"
-                      strokeWidth="1.5"
+                      stroke="#7e6a5e"
+                      strokeWidth="2"
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      opacity={0.65}
+                      opacity={0.95}
                     />
                   </svg>
                 </motion.div>
               </section>
 
-              {/* ── 2. Countdown ── */}
+              {/* 2. Countdown */}
               <CountdownTimer targetDate="2026-04-29T20:00:00" language={language} />
 
-              {/* فاصل بصري بين العد التنازلي وتفاصيل المكان */}
+              {/* Divider */}
               <div className="relative flex justify-center py-12 px-6" aria-hidden="true">
                 <div className="flex w-full max-w-[240px] flex-col items-center gap-5">
                   <div className="h-px w-full bg-linear-to-r from-transparent via-[#c4b4a8]/50 to-transparent" />
                   <div className="flex items-center gap-3">
                     <span className="h-px w-8 bg-[#c4b4a8]/35" />
-                    <span className={`text-[9px] ${isArabic ? '' : 'tracking-[0.35em]'} text-[#a8988c]/70 uppercase`}>{copy.venue}</span>
+                    <span className="text-[9px] text-[#a8988c]/70">{copy.venue}</span>
                     <span className="h-px w-8 bg-[#c4b4a8]/35" />
                   </div>
                 </div>
               </div>
 
-              {/* ── 3. Location / venue ── */}
+              {/* 3. Location / Venue */}
               <WeddingDetails language={language} />
 
-              {/* ── 4. Save the Date ── */}
+              {/* 4. Save the Date - always English */}
               <section className="min-h-screen flex flex-col items-center justify-center py-8 px-4">
                 <motion.div
-                  initial={{ y: 56, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }}
+                  initial={{ y: 56, opacity: 0 }}
+                  whileInView={{ y: 0, opacity: 1 }}
                   transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
                   viewport={{ once: true, margin: "-80px" }}
                   className="w-full max-w-sm mx-auto"
                 >
-                  <div className="relative rounded-3xl overflow-hidden"
-                    style={{ boxShadow: "0 32px 80px -16px rgba(140,100,80,0.28)" }}>
-                    <Image src="/images/couple.jpg" alt="Wiam & Waleed" width={500} height={600} className="w-full h-auto" />
-                    <div className="absolute inset-0 flex flex-col items-center justify-start pt-15 md:pt-12">
-                      <motion.p initial={{ opacity: 0, y: -8 }} whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }} transition={{ delay: 0.15 }}
-                        className={`text-[10px] ${isArabic ? '' : 'tracking-[0.38em]'} text-[#7a6458] uppercase mb-9`}>{copy.saveTheDate}</motion.p>
-                      <motion.h1 initial={{ opacity: 0, scale: 0.93 }} whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }} transition={{ delay: 0.25 }}
-                        className="text-4xl md:text-5xl text-[#6b5248]"
-                        style={{ fontFamily: "var(--font-script), 'Great Vibes', cursive" }}>Wiam & Waleed</motion.h1>
-                      <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }}
-                        viewport={{ once: true }} transition={{ delay: 0.4 }}
-                        className="text-lg text-[#7a6458] mt-3"
-                        style={{ fontFamily: "var(--font-script), 'Great Vibes', cursive" }}>29th April 2026</motion.p>
+                  <div
+                    className="relative rounded-3xl overflow-hidden"
+                    style={{ boxShadow: "0 32px 80px -16px rgba(140,100,80,0.28)" }}
+                  >
+                    <Image
+                      src="/images/couple.jpg"
+                      alt="Weaam & Waleed"
+                      width={500}
+                      height={600}
+                      className="w-full h-auto"
+                    />
+
+                    <div className="absolute inset-0 flex flex-col items-center justify-start pt-24 md:pt-20">
+                      <motion.p
+                        initial={{ opacity: 0, y: -8 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.15 }}
+                        className="text-[15px] text-[#7a6458] mb-3"
+                        style={{ fontFamily: scriptFont }}
+                      >
+                        Save the Date
+                      </motion.p>
+
+                      <motion.h1
+                        initial={{ opacity: 0, scale: 0.93 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.25 }}
+                        className="text-2xl text-[#6b5248] text-center"
+                        style={{ fontFamily: scriptFont }}
+                      >
+                        Weaam & Waleed
+                      </motion.h1>
+
+                      <motion.p
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.4 }}
+                        className="text-xl text-[#7a6458] mt-2 text-center"
+                        style={{ fontFamily: scriptFont }}
+                      >
+                        April 29, 2026
+                      </motion.p>
                     </div>
                   </div>
 
-                  <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }} transition={{ delay: 0.35 }}
-                    className="flex justify-center gap-3 mt-6">
-                    {["#f2b4b4","#b5d1b5","#b4c8dc","#dcc4b4","#d0b4d0"].map((c, i) => (
-                      <motion.div key={i} className="w-2.5 h-2.5 rounded-full" style={{ background: c, opacity: 0.82 }}
-                        animate={{ scale: [1, 1.4, 1] }} transition={{ duration: 2, repeat: Infinity, delay: i * 0.15 }} />
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.35 }}
+                    className="flex justify-center gap-3 mt-6"
+                  >
+                    {["#f2b4b4", "#b5d1b5", "#b4c8dc", "#dcc4b4", "#d0b4d0"].map((c, i) => (
+                      <motion.div
+                        key={i}
+                        className="w-2.5 h-2.5 rounded-full"
+                        style={{ background: c, opacity: 0.82 }}
+                        animate={{ scale: [1, 1.4, 1] }}
+                        transition={{ duration: 2, repeat: Infinity, delay: i * 0.15 }}
+                      />
                     ))}
                   </motion.div>
                 </motion.div>
               </section>
 
-              {/* ── Footer ── */}
-              <footer className="py-14 text-center relative"
-                style={{ background: "linear-gradient(180deg, rgba(255,252,250,0.88) 0%, rgba(252,238,232,0.96) 100%)" }}>
-                <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }}
-                  transition={{ duration: 0.8 }} viewport={{ once: true }}>
-                  <p className={`text-sm text-[#9e8e82] ${isArabic ? '' : 'tracking-[0.3em]'}`}>29 · 04 · 2026</p>
+              {/* Footer */}
+              <footer
+                className="py-14 text-center relative"
+                style={{
+                  background:
+                    "linear-gradient(180deg, rgba(255,252,250,0.88) 0%, rgba(252,238,232,0.96) 100%)",
+                }}
+              >
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ duration: 0.8 }}
+                  viewport={{ once: true }}
+                >
+                  <p className="text-sm text-[#9e8e82]">{copy.footerDate}</p>
+
                   <div className="flex justify-center gap-3 mt-6">
-                    {["#f2b4b4","#b4c8dc","#b5d1b5","#d0b4d0","#dcc4b4"].map((c, i) => (
-                      <motion.svg key={i} width="14" height="14" viewBox="0 0 24 24" fill={c} style={{ opacity: 0.85 }}
-                        animate={{ scale: [1, 1.28, 1] }} transition={{ duration: 1.3, repeat: Infinity, delay: i * 0.13 }}>
+                    {["#f2b4b4", "#b4c8dc", "#b5d1b5", "#d0b4d0", "#dcc4b4"].map((c, i) => (
+                      <motion.svg
+                        key={i}
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill={c}
+                        style={{ opacity: 0.85 }}
+                        animate={{ scale: [1, 1.28, 1] }}
+                        transition={{ duration: 1.3, repeat: Infinity, delay: i * 0.13 }}
+                      >
                         <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
                       </motion.svg>
                     ))}
                   </div>
-                  <p className={`text-sm text-[#b0a098] mt-8 ${isArabic ? '' : 'tracking-wide'}`}>{copy.footerMessage}</p>
+
+                  <p className="text-sm text-[#b0a098] mt-8">{copy.footerMessage}</p>
                 </motion.div>
               </footer>
-
             </div>
           </motion.div>
         )}

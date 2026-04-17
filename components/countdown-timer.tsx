@@ -56,7 +56,7 @@ export function CountdownTimer({ targetDate, language = "en" }: CountdownTimerPr
           "linear-gradient(180deg, rgba(248,242,238,0.82) 0%, rgba(242,236,230,0.88) 55%, rgba(250,246,242,0.55) 100%)",
       }}
     >
-      <div className="max-w-sm mx-auto">
+      <div className="max-w-sm mx-auto" style={isArabic ? { fontFamily: arabicFontFamily } : undefined}>
 
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }} viewport={{ once: true }} className="text-center mb-10">
@@ -64,7 +64,7 @@ export function CountdownTimer({ targetDate, language = "en" }: CountdownTimerPr
             style={{
               fontFamily: isArabic ? arabicFontFamily : "var(--font-script), 'Great Vibes', cursive",
             }}>{isArabic ? "العد التنازلي" : "Countdown"}</h2>
-          <p className="text-sm text-[#9e8e82] tracking-wide">{isArabic ? "حتى نلتقي في يومنا الجميل" : "Until we meet on our special day"}</p>
+          <p className="text-sm text-[#9e8e82]">{isArabic ? "حتى نلتقي في يومنا السعيد" : "Until we meet on our special day"}</p>
         </motion.div>
 
         <motion.div initial={{ opacity: 0, scale: 0.92 }} whileInView={{ opacity: 1, scale: 1 }}
@@ -85,7 +85,7 @@ export function CountdownTimer({ targetDate, language = "en" }: CountdownTimerPr
               <p className="text-3xl md:text-4xl font-light text-[#6b5248] tabular-nums leading-none mb-2">
                 {String(u.value).padStart(2, "0")}
               </p>
-              <p className="text-[9px] tracking-[0.18em] text-[#9e8e82]">{u.label}</p>
+              <p className="text-[9px] text-[#9e8e82]">{u.label}</p>
             </motion.div>
           ))}
         </motion.div>

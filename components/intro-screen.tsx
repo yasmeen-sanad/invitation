@@ -81,11 +81,27 @@ export function IntroScreen({ onOpen, language }: IntroScreenProps) {
             ))}
           </motion.div>
 
+          {/* Tap to open — above logo (static, no pulse) */}
+          <p className="relative z-10 mb-8 text-center text-[15px] text-[#a09080]">
+            {isArabic ? "اضغط للدخول" : "TAP TO OPEN"}
+          </p>
+
           {/* Logo */}
           <motion.div
             initial={{ y: 24, opacity: 0, scale: 0.94 }}
-            animate={{ y: 0, opacity: 1, scale: 1 }}
-            transition={{ delay: 0.1, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+            animate={{ 
+              y: 0, 
+              opacity: 1, 
+              scale: [1, 1.02, 1],
+              filter: ["brightness(1)", "brightness(1.1)", "brightness(1)"]
+            }}
+            transition={{ 
+              delay: 0.1, 
+              duration: 0.9, 
+              ease: [0.22, 1, 0.36, 1],
+              scale: { duration: 3, repeat: Infinity, ease: "easeInOut" },
+              filter: { duration: 3, repeat: Infinity, ease: "easeInOut" }
+            }}
             className="relative z-10 cursor-pointer"
             onClick={handleClick}
           >
@@ -116,7 +132,7 @@ export function IntroScreen({ onOpen, language }: IntroScreenProps) {
             transition={{ delay: 0.45, duration: 0.65, ease: "easeOut" }}
             className="relative z-10 mt-5 text-center"
           >
-            <p className={`text-[11px] uppercase ${isArabic ? '' : 'tracking-[0.38em]'} text-[#9e8e82]`}>
+            <p className="text-[16px] text-[#9e8e82]">
               {isArabic ? "دعوة لحفل عقد قران" : "Engagement Invitation"}
             </p>
           </motion.div>
@@ -133,16 +149,6 @@ export function IntroScreen({ onOpen, language }: IntroScreenProps) {
               <circle cx="40" cy="8" r="2.5" fill="#f2b4b4" opacity="0.7" />
             </svg>
           </motion.div>
-
-          {/* Tap to open */}
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: [0.25, 0.8, 0.25] }}
-            transition={{ duration: 2.4, repeat: Infinity, delay: 0.9 }}
-            className={`relative z-10 mt-10 text-[11px] ${isArabic ? '' : 'tracking-[0.28em]'} text-[#a09080]`}
-          >
-            {isArabic ? "اضغط للدخول" : "TAP TO OPEN"}
-          </motion.p>
         </motion.div>
       ) : (
         <motion.div

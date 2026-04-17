@@ -16,20 +16,20 @@ export function WeddingDetails({ language = "en" }: WeddingDetailsProps) {
   const timelineItems = [
     {
       side: "left",
-      time: isArabic ? "٨:٣٠ مساءً" : "8:30 PM",
-      label: isArabic ? "استقبال الضيوف" : "Guest Arrival",
+      time: isArabic ? "8:30 PM" : "8:30 PM",
+      label: isArabic ? "Guest Arrival" : "Guest Arrival",
       icon: <Users className="w-4 h-4" strokeWidth={1.5} style={{ color: "#c4906e" }} />,
     },
     {
       side: "right",
-      time: isArabic ? "١٠:٣٠ مساءً" : "10:30 PM",
-      label: isArabic ? "الزفة" : "Zaffah",
+      time: isArabic ? "10:00 PM" : "10:00 PM",
+      label: isArabic ? "Zaffah" : "Zaffah",
       icon: <Star className="w-4 h-4" strokeWidth={1.5} style={{ color: "#c4906e" }} />,
     },
     {
       side: "left",
-      time: isArabic ? "١٢:٠٠ صباحًا" : "12:00 AM",
-      label: isArabic ? "العشاء" : "Dinner",
+      time: isArabic ? "12:00 AM" : "12:00 AM",
+      label: isArabic ? "Dinner" : "Dinner",
       icon: <Coffee className="w-4 h-4" strokeWidth={1.5} style={{ color: "#c4906e" }} />,
     },
   ]
@@ -48,10 +48,10 @@ export function WeddingDetails({ language = "en" }: WeddingDetailsProps) {
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }} viewport={{ once: true }} className="text-center mb-8">
           <h2 className="text-4xl text-[#6b5248] mb-2" style={{ fontFamily: scriptFont }}>
-            {isArabic ? "التفاصيل" : "Details of the Day"}
+            {isArabic ? "Details" : "Details of the Day"}
           </h2>
           <p className="text-sm text-[#9e8e82]">
-            {isArabic ? "كل ما تحتاجون معرفته عن يومنا السعيد" : "Everything you need to know about our special day"}
+            {isArabic ? "Everything you need to know about our special day" : "Everything you need to know about our special day"}
           </p>
         </motion.div>
 
@@ -67,7 +67,7 @@ export function WeddingDetails({ language = "en" }: WeddingDetailsProps) {
           <div className="relative aspect-4/3 w-full">
             <Image
               src="/images/elvee-event-hall.png"
-              alt="ELVEE Event Hall — entrance"
+              alt="Venue entrance"
               fill
               className="object-cover object-center"
               sizes="(max-width: 640px) 100vw, 384px"
@@ -86,63 +86,17 @@ export function WeddingDetails({ language = "en" }: WeddingDetailsProps) {
             backdropFilter: "blur(12px)",
           }}>
           <div className="space-y-3">
-            <div className={`flex items-center gap-3 text-[#7a6a60] ${isArabic ? 'flex-row-reverse' : ''}`}>
+            <div className="flex items-center gap-3 text-[#7a6a60]">
               <MapPin className="w-4 h-4 shrink-0" style={{ color: "#c4a090" }} />
-              <span className={`text-sm ${isArabic ? 'text-right' : ''}`}>{isArabic ? "قاعة إلفي" : "ELVEE Event Hall"}</span>
+              <span className="text-sm">{isArabic ? "Riyadh, Saudi Arabia" : "ELVEE Event Hall"}</span>
             </div>
-            <div className={`flex items-center gap-3 text-[#7a6a60] ${isArabic ? 'flex-row-reverse' : ''}`}>
+            <div className="flex items-center gap-3 text-[#7a6a60]">
               <Calendar className="w-4 h-4 shrink-0" style={{ color: "#a0b888" }} />
-              <span className={`text-sm ${isArabic ? 'text-right' : ''}`}>{isArabic ? "الأربعاء، ٢٩ أبريل ٢٠٢٦" : "Wednesday, 29.4.2026"}</span>
+              <span className="text-sm">{isArabic ? "Wednesday, 29.4.2026" : "Wednesday, 29.4.2026"}</span>
             </div>
-            <div className={`flex items-center gap-3 text-[#7a6a60] ${isArabic ? 'flex-row-reverse' : ''}`}>
+            <div className="flex items-center gap-3 text-[#7a6a60]">
               <Clock className="w-4 h-4 shrink-0" style={{ color: "#88aac0" }} />
-              <span className={`text-sm ${isArabic ? 'text-right' : ''}`}>{isArabic ? "من الساعة ٨:٣٠ مساءً" : "From 8:30 PM"}</span>
-            </div>
-          </div>
-          {/* Notes divider */}
-          <div className="border-t border-[#d9c0ae]/30 pt-4 mt-4">
-            <p className={`text-xs text-[#b4957e] mb-3 text-center ${isArabic ? 'text-right' : ''}`}>
-              {isArabic ? "ملاحظات" : "Notes"}
-            </p>
-            <div className="flex flex-col gap-2">
-              <div className={`flex items-start gap-2 ${isArabic ? 'flex-row-reverse' : ''}`}>
-                <div
-                  className="w-6 h-6 rounded-full flex items-center justify-center shrink-0 mt-0.5"
-                  style={{ background: "#f5ebe3", border: "0.5px solid #d9c0ae" }}
-                >
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none"
-                    stroke="#c4906e" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <circle cx="12" cy="8" r="4" />
-                    <path d="M20 21a8 8 0 1 0-16 0" />
-                    <line x1="15" y1="5" x2="21" y2="11" />
-                    <line x1="21" y1="5" x2="15" y2="11" />
-                  </svg>
-                </div>
-                <p className={`text-sm text-[#7a5a4a] italic leading-relaxed ${isArabic ? 'text-right' : ''}`}>
-                  {isArabic ? "يُمنع حضور الأطفال منعا باتا" : "Children are not allowed."}
-                </p>
-              </div>
-              <div className={`flex items-start gap-2 ${isArabic ? 'flex-row-reverse' : ''}`}>
-                <div
-                  className="w-6 h-6 rounded-full flex items-center justify-center shrink-0 mt-0.5"
-                  style={{ background: "#f5ebe3", border: "0.5px solid #d9c0ae" }}
-                >
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none"
-                    stroke="#c4906e" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M20 12V22H4V12" />
-                    <path d="M22 7H2v5h20V7z" />
-                    <path d="M12 22V7" />
-                    <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z" />
-                    <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z" />
-                  </svg>
-                </div>
-                <p className={`text-sm text-[#7a5a4a] italic leading-relaxed ${isArabic ? 'text-right' : ''}`}>
-                  {isArabic 
-                    ? "الدعوة شخصية؛ يُرجى الالتزام بالعدد المذكور من الحضور حيث لن يسمح بتجاوزالعدد المحدد"
-                    : "This invitation is personal; please adhere to the stated number of guests."
-                  }
-                </p>
-              </div>
+              <span className="text-sm">{isArabic ? "From 8:30 PM" : "From 8:30 PM"}</span>
             </div>
           </div>
         </motion.div>
@@ -160,28 +114,32 @@ export function WeddingDetails({ language = "en" }: WeddingDetailsProps) {
               boxShadow: "0 6px 24px rgba(196,160,144,0.38)",
             }}>
             <MapPin className="w-4 h-4" />
-            <span className="text-sm">{isArabic ? "الموقع" : "Location"}</span>
+            <span className="text-sm">{isArabic ? "How to get there" : "How to get there"}</span>
           </a>
         </motion.div>
 
-        {/* ── Timeline ── */}
+        {/* Timeline */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.25 }}
           viewport={{ once: true }}
-          className="rounded-2xl p-4 "
+          className="rounded-2xl p-6 mb-6"
           style={{
             background: "rgba(255,252,250,0.92)",
             border: "1px solid rgba(215,190,172,0.28)",
           }}
         >
           {/* Section heading with flourish */}
-          <div className="flex flex-col items-center mb-4">
-            <svg width="100" height="18" viewBox="" className="">  
+          <div className="flex flex-col items-center mb-6">
+            <svg width="100" height="18" viewBox="0 0 100 18" className="mb-2 opacity-60">
+              <path d="M2,9 Q25,2 50,9 Q75,16 98,9" stroke="#c4a090" strokeWidth="1" fill="none" />
+              <circle cx="50" cy="9" r="3" fill="#e8c4b0" />
+              <circle cx="25" cy="6" r="1.5" fill="#c8d8b8" />
+              <circle cx="75" cy="12" r="1.5" fill="#b8c8d8" />
             </svg>
-            <p className="text-sm text-[#b4957e]">
-              {isArabic ? "تسلسل الحفل" : "Timeline"}
+            <p className="text-xs text-[#b4957e]">
+              Timeline
             </p>
           </div>
 
@@ -189,19 +147,19 @@ export function WeddingDetails({ language = "en" }: WeddingDetailsProps) {
           <div className="relative">
             {/* Center line */}
             <div
-              className="absolute left-1/2 top-3 bottom-3 w-px -translate-x-1/2"
+              className="absolute left-1/2 top-5 bottom-5 w-px -translate-x-1/2"
               style={{
                 background:
                   "linear-gradient(to bottom, transparent, #d9c0ae 15%, #d9c0ae 85%, transparent)",
               }}
             />
 
-            <div className="flex flex-col gap-8">
+            <div className="flex flex-col gap-6">
               {timelineItems.map((item, i) => (
                 <div
                   key={i}
                   className="grid items-center"
-                  style={{ gridTemplateColumns: "1fr 48px 1fr", gap: "0 12px" }}
+                  style={{ gridTemplateColumns: "1fr 40px 1fr", gap: "0 8px" }}
                 >
                   {/* Left cell */}
                   <div className={item.side === "left" ? "text-right" : ""}>
@@ -239,9 +197,16 @@ export function WeddingDetails({ language = "en" }: WeddingDetailsProps) {
           </div>
         </motion.div>
 
-       
-
-              </div>
+        {/* Divider flourish */}
+        <div className="flex justify-center mt-8">
+          <svg width="110" height="28" viewBox="0 0 110 28" fill="none">
+            <path d="M5,14 Q20,4 38,14 Q55,24 72,14 Q90,4 105,14" stroke="#e0c8b8" strokeWidth="1.5" fill="none" />
+            <circle cx="55" cy="14" r="4" fill="#f2b4b4" opacity="0.75" />
+            <circle cx="38" cy="14" r="2.5" fill="#b5d1b5" opacity="0.7" />
+            <circle cx="72" cy="14" r="2.5" fill="#b4c8dc" opacity="0.7" />
+          </svg>
+        </div>
+      </div>
     </section>
   )
 }
