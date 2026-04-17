@@ -30,7 +30,7 @@ export default function WeddingInvitation() {
           "With sincere affection and love, Mrs. Noura Ali, wife of Dr.Sanad Abdulaziz, is honored to invite you to attend the engagement ceremony of her daughter",
         byWillOfGod: "By the will of God",
         venue: "Venue",
-        invitationDate: "Wednesday, April 29, 2026",
+        invitationDate: "April 29",
         footerDate: "29 · 04 · 2026",
         footerMessage: "We can't wait to celebrate with you",
       }
