@@ -18,7 +18,7 @@ export default function WeddingInvitation() {
   const copy = isArabic
     ? {
         together:
-          "تتشرف السيدة / نورية علي والسيدة / منال علي بدعوتكم لحضور حفل عقد قران",
+          "بصادق الود والمحبة تتشرف السيدة / نورية علي والسيدة /منال علي بدعوتكم لحضور حفل عقد قران",
         byWillOfGod: "وذلك بمشيئة الله",
         venue: "الموقع",
         invitationDate: " ٢٩ أبريل ",
@@ -27,7 +27,7 @@ export default function WeddingInvitation() {
       }
     : {
         together:
-          "With sincere affection and love, Mrs. Noura Ali, wife of Dr.Sanad Abdulaziz, is honored to invite you to attend the engagement ceremony of her daughter",
+          "With sincere affection and love, Mrs. Noura Ali, and  Mrs. Manal Ali are honored to invite you to attend the engagement ceremony of ",
         byWillOfGod: "By the will of God",
         venue: "Venue",
         invitationDate: "April 29",
@@ -129,7 +129,7 @@ export default function WeddingInvitation() {
                     className="mb-1 text-3xl text-[#6e5c54]/100 md:text-6xl"
                     style={isArabic ? { fontFamily: arabicFontFamily } : { fontFamily: scriptFont }}
                   >
-                    {isArabic ? "وئام" : "Weaam"}
+                    {isArabic ? "وليد" : "Waleed"}
                   </h1>
 
                   <p
@@ -143,7 +143,7 @@ export default function WeddingInvitation() {
                     className="mb-6 text-3xl text-[#6e5c54] md:text-6xl"
                     style={isArabic ? { fontFamily: arabicFontFamily } : { fontFamily: scriptFont }}
                   >
-                    {isArabic ? "وليد" : "Waleed"}
+                    {isArabic ? "وئام" : "Weaam"}
                   </h1>
 
                   <div>
