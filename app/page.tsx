@@ -18,7 +18,7 @@ export default function WeddingInvitation() {
   const copy = isArabic
     ? {
         together:
-          "بصادق الود والمحبة تتشرف السيدة/ نورية علي حرم الدكتور/ سند عبدالعزيز بدعوتكم لحضور حفلة عقد قران ابنتها",
+          "تتشرف السيدة / نورية علي والسيدة / منال علي بدعوتكم لحضور حفل عقد قران",
         byWillOfGod: "وذلك بمشيئة الله",
         venue: "الموقع",
         invitationDate: " ٢٩ أبريل ",
@@ -119,21 +119,21 @@ export default function WeddingInvitation() {
 
                   <p
                     className={`mb-4 ${
-                      isArabic ? "text-[14px]" : "text-[12px] leading-snug"
-                    } text-[#a8988c]/90`}
+                      isArabic ? "text-[16px]" : "text-[14px] leading-snug"
+                    } text-[#6e5c54]/100`}
                   >
                     {copy.together}
                   </p>
 
                   <h1
-                    className="mb-1 text-3xl text-[#6e5c54] md:text-6xl"
+                    className="mb-1 text-3xl text-[#6e5c54]/100 md:text-6xl"
                     style={isArabic ? { fontFamily: arabicFontFamily } : { fontFamily: scriptFont }}
                   >
                     {isArabic ? "وئام" : "Weaam"}
                   </h1>
 
                   <p
-                    className="my-1.5 text-sm text-[#c9a99a]/95"
+                    className="my-1.5 text-sm text-[#6e5c54]/100"
                     style={isArabic ? { fontFamily: arabicFontFamily } : { fontFamily: scriptFont }}
                   >
                     {isArabic ? "على" : "&"}
@@ -148,7 +148,7 @@ export default function WeddingInvitation() {
 
                   <div>
                     <p
-                      className={`text-sm text-[#8a7a72]/90 mb-2 ${
+                      className={`text-sm text-[#6e5c54]/100 mb-2 ${
                         isArabic ? "text-[13px]" : "text-[12px] leading-snug"
                       }`}
                     >
