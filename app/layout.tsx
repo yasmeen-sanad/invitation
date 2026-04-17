@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     siteName: "Weaam & Waleed",
     images: [
       {
-        url: "/images/ww-logo.png",
+        url: "/images/ww-logo.png", 
         width: 1200,
         height: 630,
         alt: "Weaam & Waleed - Wedding Invitation",
@@ -66,7 +66,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Weaam & Waleed - Wedding Invitation",
     description: "You are cordially invited to celebrate our engagement - April 29, 2026",
-    images: ["/images/ww-logo.png"],
+    images: ["/images/ww-logo.png"], // ← نفس الصورة
   },
 }
 
