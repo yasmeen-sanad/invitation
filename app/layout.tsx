@@ -30,19 +30,19 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        url: "/images/ww-logo.png",
+        url: "/images/og-cover.jpg",
         media: "(prefers-color-scheme: light)",
       },
       {
-        url: "/images/ww-logo.png",
+        url: "/images/og-cover.jpg",
         media: "(prefers-color-scheme: dark)",
       },
       {
-        url: "/images/ww-logo.png",
+        url: "/images/og-cover.jpg",
         type: "image/svg+xml",
       },
     ],
-    apple: "/images/ww-logo.png",
+    apple: "/images/og-cover.jpg",
   },
 
   openGraph: {
